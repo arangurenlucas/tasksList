@@ -7,7 +7,7 @@ const {
   postNewFolder,
   deleteFolder,
   getTask,
-  getTaskyById,
+  getTaskById,
   postNewTask,
   putTask,
   completedTask,
@@ -20,7 +20,7 @@ router.post("/folders", postNewFolder);
 router.delete("/folders/:id", deleteFolder);
 
 router.get("/tasks", getTask);
-router.get("/tasks/:id", getTaskyById);
+router.get("/tasks/:id", getTaskById);
 router.post("/tasks", postNewTask);
 router.put("/tasks/:id", putTask);
 router.put("/tasks/completed/:id", completedTask);

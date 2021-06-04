@@ -79,7 +79,7 @@ const getTask = async (req, res) => {
   }
 };
 //getTask by id
-const getTaskyById = async (req, res) => {
+const getTaskById = async (req, res) => {
   try {
     const response = await pool.query("SELECT * FROM tasks WHERE id=$1", [
       req.params.id,
@@ -185,7 +185,7 @@ module.exports = {
   postNewFolder,
   deleteFolder,
   getTask,
-  getTaskyById,
+  getTaskById,
   postNewTask,
   putTask,
   completedTask,
