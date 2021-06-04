@@ -97,10 +97,19 @@ const postNewTask = async (req, res) => {
     if (!name || !req.body.folder_id)
       throw new Error("Name and folder are required");
     //validation
-    const validation = await pool.query("SELECT * FROM tasks WHERE name = $1", [
-      name,
-    ]);
-    if (validation.rows.length > 0) throw new Error("Task name already exists");
+    const validationName = await pool.query(
+      "SELECT * FROM tasks WHERE name = $1",
+      [name]
+    );
+    if (validationName.rows.length > 0)
+      throw new Error("Task name already exists");
+
+    const validationFolder = await pool.query(
+      "SELECT * FROM folder WHERE id = $1",
+      [req.body.folder_id]
+    );
+    if (!validationFolder.rows.length > 0)
+      throw new Error("Cant find the selected folder");
     //post sentence
     const response = await pool.query(
       "INSERT INTO tasks (name, folder_id) VALUES ($1, $2)",
