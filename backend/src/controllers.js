@@ -33,9 +33,9 @@ const getFolderById = async (req, res) => {
 
 const postNewFolder = async (req, res) => {
   try {
+    if (!req.body.name) throw new Error("Name is required");
+    
     const name = req.body.name.toUpperCase().trim();
-    if (!name) throw new Error("Name is required");
-
     // validation
     const validation = await pool.query(
       "SELECT * FROM folder WHERE name = $1",
@@ -94,7 +94,7 @@ const getTaskById = async (req, res) => {
 const postNewTask = async (req, res) => {
   try {
     if (!req.body.name || !req.body.folder_id)
-    throw new Error("Name and folder are required");
+      throw new Error("Name and folder are required");
     const name = req.body.name.toUpperCase().trim();
     //validation
     const validationName = await pool.query(
