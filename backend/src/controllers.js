@@ -93,9 +93,9 @@ const getTaskById = async (req, res) => {
 //newTask
 const postNewTask = async (req, res) => {
   try {
+    if (!req.body.name || !req.body.folder_id)
+    throw new Error("Name and folder are required");
     const name = req.body.name.toUpperCase().trim();
-    if (!name || !req.body.folder_id)
-      throw new Error("Name and folder are required");
     //validation
     const validationName = await pool.query(
       "SELECT * FROM tasks WHERE name = $1",
