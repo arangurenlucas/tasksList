@@ -21,7 +21,7 @@ export default function EditTask(props) {
   };
 
   useEffect(() => {
-    getTask();
+    getTask();// eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleChangeName = (e) => {

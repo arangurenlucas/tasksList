@@ -19,7 +19,7 @@ export default function FoldersView() {
   };
 
   useEffect(() => {
-    getFolders();
+    getFolders();// eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const removeFolder = async (idToRemove) => {

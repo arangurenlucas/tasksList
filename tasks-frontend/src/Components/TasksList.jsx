@@ -31,8 +31,8 @@ export default function TasksList(props) {
     }
   };
   useEffect(() => {
-    getTasks();
-    getFolder();
+    getTasks();// eslint-disable-next-line react-hooks/exhaustive-deps
+    getFolder();// eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const redirectionNewTask = () => {

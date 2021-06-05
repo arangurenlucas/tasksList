@@ -20,7 +20,7 @@ export default function AddTask(props) {
   };
 
   useEffect(() => {
-    getFolders();
+    getFolders(); // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleTaskName = (e) => {
